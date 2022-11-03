@@ -18,15 +18,6 @@ function CountryDetailPage() {
         return languageStr.slice(1);
     }
 
-    function getCurrencyList(curr) {
-        let currencyList = '';
-        for (const key in curr) {
-            const { name, symbol } = curr[key];
-            currencyList += `${name} (${symbol}), \n`;
-        }
-        return currencyList;
-    }
-
     function getCurrency(curr) {
         let currency = ''
         currency = Object.values(curr || 'c').map((item, ind) => <div key={ind}>{item.name} - {item.symbol}</div>);

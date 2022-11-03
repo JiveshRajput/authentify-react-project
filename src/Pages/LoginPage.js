@@ -5,21 +5,21 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setLoggedIn } from '../Store/LoggedInSlice';
 import Loader from '../Components/Loader';
-import Modal from '../Components/Modal'
+import './loginPage.css';
 
 function LoginPage() {
     const Dispatch = useDispatch();
     const Navigate = useNavigate();
     const [rememberMe, setRememberMe] = useState(false);
     const [load, setLoad] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const { register, formState: { errors }, handleSubmit, trigger, reset } = useForm();
 
-    document.title = 'Login Page - Authentication Project';
+    document.title = 'Login Page - Authentify';
 
     useEffect(() => {
         checkData();
     }, [checkData]);
-
 
     function checkData() {
         if (localStorage.getItem('usertoken')) {
@@ -43,7 +43,7 @@ function LoginPage() {
             Dispatch(setLoggedIn(true));
             Navigate('/');
         }).catch(err => {
-            alert(err.response.data.error);
+            setShowModal(true);
         }).finally(() => {
             setLoad(false);
             reset();
@@ -92,6 +92,17 @@ function LoginPage() {
                     </form>
                 </div>
             </div>
+            {showModal &&
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div className="cus-modal-header">
+                        <p>Error Occured</p>
+                        <span onClick={()=>setShowModal(false)} class="close">&times;</span>
+                        </div>
+                        <p className='cus-modal-value'>User Not Found</p>
+                    </div>
+                </div>
+            }
         </>
     )
 }
