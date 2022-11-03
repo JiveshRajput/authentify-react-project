@@ -10,8 +10,8 @@ function Navbar() {
         if (localStorage.getItem('usertoken')) {
             localStorage.removeItem('usertoken');
             Dispatch(setLoggedIn(false));
-            Navigate('/login');
         }
+        Navigate('/login');
     }
 
     return (
