@@ -93,8 +93,8 @@ function LoginPage() {
                 </div>
             </div>
             {showModal &&
-                <div id="myModal" class="modal">
-                    <div class="modal-content">
+                <div id="myModal" class="cus-modal">
+                    <div class="cus-modal-content">
                         <div className="cus-modal-header">
                         <p>Error Occured</p>
                         <span onClick={()=>setShowModal(false)} class="close">&times;</span>
