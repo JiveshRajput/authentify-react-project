@@ -15,5 +15,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-// https://restcountries.com/v3.1/alpha/bb
